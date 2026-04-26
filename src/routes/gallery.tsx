@@ -1,63 +1,86 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
-import { Reveal } from "@/components/site/Reveal";
-import heroImg from "@/assets/hero-coffee.jpg";
-import sig1 from "@/assets/signature-1.jpg";
-import sig2 from "@/assets/signature-2.jpg";
-import exp1 from "@/assets/experience-1.jpg";
-import exp2 from "@/assets/experience-2.jpg";
-import exp3 from "@/assets/experience-3.jpg";
-import menuCoffee from "@/assets/menu-coffee.jpg";
-import menuMatcha from "@/assets/menu-matcha.jpg";
-import menuToast from "@/assets/menu-toast.jpg";
-import menuDessert from "@/assets/menu-dessert.jpg";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { GsapReveal } from "@/components/site/GsapReveal";
+import pizzaImg from "@/assets/food-pizza.jpg";
+import burgerImg from "@/assets/food-burger.jpg";
+import sandwichImg from "@/assets/food-sandwich.jpg";
+import friesImg from "@/assets/food-fries.jpg";
+import drinkImg from "@/assets/food-drink.jpg";
+import interiorImg from "@/assets/cafe-interior.jpg";
+import heroImg from "@/assets/food-hero.jpg";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Gallery — Maison Noir" },
-      { name: "description", content: "Lantern light, marble counters, and quiet evenings — a visual journal of Maison Noir." },
-      { property: "og:title", content: "Gallery — Maison Noir" },
-      { property: "og:description", content: "A visual journal of Maison Noir." },
-      { property: "og:image", content: exp1 },
+      { title: "Gallery — Crust & Co" },
+      { name: "description", content: "A look inside Crust & Co — the food, the room, the people." },
+      { property: "og:title", content: "Gallery — Crust & Co" },
+      { property: "og:description", content: "A visual journal of Crust & Co." },
+      { property: "og:image", content: interiorImg },
     ],
   }),
   component: GalleryPage,
 });
 
-const images = [heroImg, exp1, sig1, menuCoffee, exp3, sig2, exp2, menuMatcha, menuToast, menuDessert];
+const images = [heroImg, interiorImg, pizzaImg, burgerImg, sandwichImg, friesImg, drinkImg, pizzaImg, burgerImg, sandwichImg];
 
 function GalleryPage() {
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!gridRef.current) return;
+    const ctx = gsap.context(() => {
+      const items = gsap.utils.toArray<HTMLElement>(".gal-item");
+      items.forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 50, scale: 0.96 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: { trigger: el, start: "top 90%", toggleActions: "play none none none" },
+          },
+        );
+      });
+    }, gridRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="pt-36 pb-10">
+    <div className="pt-32 pb-10">
       <section className="mx-auto max-w-7xl px-6">
-        <Reveal>
-          <p className="text-xs uppercase tracking-[0.3em] text-gold">Gallery</p>
-          <h1 className="mt-4 font-display text-6xl md:text-8xl leading-[0.95] max-w-4xl">
-            A visual <span className="italic text-gradient-gold">journal</span>.
+        <GsapReveal>
+          <span className="pill bg-[var(--cream)] text-[var(--tomato)]">Gallery</span>
+          <h1 className="mt-4 font-display text-6xl md:text-8xl max-w-4xl">
+            The food. The <span className="text-gradient-warm italic">room</span>.
           </h1>
           <p className="mt-6 max-w-xl text-muted-foreground text-lg leading-relaxed">
-            Glances of the room, the cups, the hands and the small still hours.
+            A look at what comes out of the kitchen and the room you'll eat it in.
           </p>
-        </Reveal>
+        </GsapReveal>
 
-        <div className="mt-16 columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_balance]">
+        <div ref={gridRef} className="mt-14 columns-1 sm:columns-2 lg:columns-3 gap-5 [column-fill:_balance]">
           {images.map((src, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.7, delay: (i % 4) * 0.05 }}
-              className="mb-6 break-inside-avoid overflow-hidden rounded-3xl group cursor-pointer"
+              className="gal-item mb-5 break-inside-avoid overflow-hidden rounded-3xl group cursor-pointer card-soft"
             >
               <img
                 src={src}
                 alt={`Gallery ${i + 1}`}
-                className="w-full object-cover transition-transform duration-[1.4s] group-hover:scale-105"
+                className="w-full object-cover transition-transform duration-[1.2s] group-hover:scale-105"
                 loading="lazy"
               />
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
