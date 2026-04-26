@@ -7,7 +7,8 @@
       "Bash(curl -s http://localhost:8081/)",
       "Bash(pkill -f \"vite\")",
       "Bash(pkill -f \"node.*dev\")",
-      "Bash(node --input-type=module -e ' *)"
+      "Bash(node --input-type=module -e ' *)",
+      "Bash(cat \"C:\\\\\\\\Users\\\\\\\\vp413\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\claude\\\\\\\\e--velvet-vine\\\\\\\\61f9d5c6-7124-483b-80d9-b4061a2837e0\\\\\\\\tasks\\\\\\\\bjfh5cvol.output\")"
     ]
   }
 }
