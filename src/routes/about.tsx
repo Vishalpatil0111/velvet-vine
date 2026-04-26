@@ -1,17 +1,18 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Reveal } from "@/components/site/Reveal";
-import sig1 from "@/assets/signature-1.jpg";
-import sig2 from "@/assets/signature-2.jpg";
-import exp1 from "@/assets/experience-1.jpg";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { GsapReveal } from "@/components/site/GsapReveal";
+import { Flame, Leaf, Award, ArrowUpRight } from "lucide-react";
+import interiorImg from "@/assets/cafe-interior.jpg";
+import pizzaImg from "@/assets/food-pizza.jpg";
+import burgerImg from "@/assets/food-burger.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "Signature — The Story of Maison Noir" },
-      { name: "description", content: "Maison Noir began as a quiet ritual between three friends. Today it pours coffee, plates seasonal food and holds space in Brooklyn." },
-      { property: "og:title", content: "Signature — The Story of Maison Noir" },
-      { property: "og:description", content: "A quiet ritual between three friends, now a Brooklyn café." },
-      { property: "og:image", content: sig1 },
+      { title: "Our Story — Crust & Co" },
+      { name: "description", content: "Crust & Co started as a single wood-fired oven in Brooklyn. Today we serve pizza, burgers and sandwiches with the same honest standard." },
+      { property: "og:title", content: "Our Story — Crust & Co" },
+      { property: "og:description", content: "From one oven to a Brooklyn favorite." },
+      { property: "og:image", content: interiorImg },
     ],
   }),
   component: AboutPage,
@@ -19,80 +20,107 @@ export const Route = createFileRoute("/about")({
 
 function AboutPage() {
   return (
-    <div className="pt-36 pb-10">
+    <div className="pt-32 pb-10">
       <section className="mx-auto max-w-7xl px-6">
-        <Reveal>
-          <p className="text-xs uppercase tracking-[0.3em] text-gold">Signature</p>
-          <h1 className="mt-4 font-display text-6xl md:text-8xl leading-[0.95] max-w-4xl">
-            A small place built on <span className="italic text-gradient-gold">slow time</span>.
+        <GsapReveal>
+          <span className="pill bg-[var(--cream)] text-[var(--tomato)]">Our story</span>
+          <h1 className="mt-4 font-display text-6xl md:text-8xl max-w-4xl">
+            One oven. One <span className="text-gradient-warm italic">honest</span> standard.
           </h1>
-        </Reveal>
+        </GsapReveal>
 
-        <div className="mt-20 grid lg:grid-cols-12 gap-10">
-          <Reveal className="lg:col-span-7">
+        <div className="mt-16 grid lg:grid-cols-12 gap-10">
+          <GsapReveal className="lg:col-span-7">
             <div className="overflow-hidden rounded-[2rem] aspect-[5/4]">
-              <img src={exp1} alt="Maison Noir interior" className="w-full h-full object-cover" loading="lazy" />
+              <img src={interiorImg} alt="Crust & Co interior" className="w-full h-full object-cover" loading="lazy" />
             </div>
-          </Reveal>
-          <Reveal delay={0.15} className="lg:col-span-5 flex flex-col justify-center">
-            <p className="text-xs uppercase tracking-[0.3em] text-gold">Est. 2014</p>
-            <h2 className="mt-4 font-display text-4xl leading-tight">A ritual between friends</h2>
-            <p className="mt-6 text-muted-foreground leading-relaxed text-lg">
-              Maison Noir began on a winter morning, three friends, one small roaster
-              and a stubborn belief that coffee deserved more attention than the city
-              gave it. A decade later, the room has grown but the ritual hasn't moved.
+          </GsapReveal>
+          <GsapReveal delay={0.1} className="lg:col-span-5 flex flex-col justify-center">
+            <span className="pill bg-[var(--cream)] text-[var(--tomato)] w-fit">Est. 2018</span>
+            <h2 className="mt-4 font-display text-4xl leading-tight">Built by people who eat here too</h2>
+            <p className="mt-5 text-muted-foreground leading-relaxed text-lg">
+              We opened with a wood-fired oven, a flat-top, and a stubborn rule: only serve food we'd want to eat
+              every day. Six years in, the rule still runs the kitchen.
             </p>
-            <div className="mt-8 grid grid-cols-3 gap-4">
+            <div className="mt-8 grid grid-cols-3 gap-3">
               {[
-                ["10", "Years pouring"],
-                ["18", "Origins this year"],
-                ["1", "Slow philosophy"],
+                ["6", "Years cooking"],
+                ["12k+", "Orders / month"],
+                ["4.9", "Avg rating"],
               ].map(([n, l]) => (
-                <div key={l} className="glass-card rounded-2xl p-4">
-                  <p className="font-display text-3xl text-gold">{n}</p>
+                <div key={l} className="card-soft rounded-2xl p-4">
+                  <p className="font-display text-3xl text-[var(--tomato)]">{n}</p>
                   <p className="text-xs text-muted-foreground mt-1">{l}</p>
                 </div>
               ))}
             </div>
-          </Reveal>
+          </GsapReveal>
         </div>
 
-        <div className="mt-32 grid lg:grid-cols-2 gap-10 items-center">
-          <Reveal>
-            <p className="text-xs uppercase tracking-[0.3em] text-gold">Coffee program</p>
-            <h2 className="mt-4 font-display text-5xl leading-tight">
-              Beans we travel for.
-            </h2>
-            <p className="mt-6 text-muted-foreground leading-relaxed text-lg">
-              We work directly with growers in Ethiopia, Colombia and Guatemala —
-              paying above Fair Trade and roasting in small batches every Tuesday.
-              Every bag is dated. Every cup is poured with intention.
-            </p>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <div className="overflow-hidden rounded-[2rem] aspect-square">
-              <img src={sig1} alt="Coffee" className="w-full h-full object-cover" loading="lazy" />
-            </div>
-          </Reveal>
+        {/* Pillars */}
+        <div className="mt-28 grid md:grid-cols-3 gap-5">
+          {[
+            { icon: Flame, title: "Wood-fired", body: "A 900°F oven crisps every crust in 90 seconds." },
+            { icon: Leaf, title: "Local sourcing", body: "Produce and dairy from regional farms, weekly." },
+            { icon: Award, title: "Made to order", body: "Nothing sits. Every plate hits the pass hot." },
+          ].map((p, i) => (
+            <GsapReveal key={p.title} delay={i * 0.07}>
+              <div className="card-soft rounded-3xl p-7 h-full">
+                <div className="size-12 rounded-xl bg-[var(--cream)] grid place-items-center text-[var(--tomato)]">
+                  <p.icon className="size-5" />
+                </div>
+                <h3 className="mt-5 font-display text-2xl">{p.title}</h3>
+                <p className="mt-2 text-muted-foreground">{p.body}</p>
+              </div>
+            </GsapReveal>
+          ))}
         </div>
 
-        <div className="mt-32 grid lg:grid-cols-2 gap-10 items-center">
-          <Reveal className="lg:order-2">
-            <p className="text-xs uppercase tracking-[0.3em] text-gold">Kitchen</p>
-            <h2 className="mt-4 font-display text-5xl leading-tight">
-              Chef Amara's seasonal hand.
-            </h2>
-            <p className="mt-6 text-muted-foreground leading-relaxed text-lg">
-              The menu is short on purpose. Chef Amara writes it around the morning
-              market — slow-fermented breads, plates assembled from what's at peak,
-              desserts that arrive quietly under candlelight.
+        {/* Split sections */}
+        <div className="mt-28 grid lg:grid-cols-2 gap-10 items-center">
+          <GsapReveal>
+            <span className="pill bg-[var(--cream)] text-[var(--tomato)]">The dough</span>
+            <h2 className="mt-4 font-display text-5xl leading-tight">48-hour cold-fermented.</h2>
+            <p className="mt-5 text-muted-foreground leading-relaxed text-lg">
+              We mix every morning, then rest it cold for two full days. It's why the
+              crust is light, airy, and easy on the stomach.
             </p>
-          </Reveal>
-          <Reveal delay={0.15} className="lg:order-1">
+          </GsapReveal>
+          <GsapReveal delay={0.1}>
             <div className="overflow-hidden rounded-[2rem] aspect-square">
-              <img src={sig2} alt="Chef" className="w-full h-full object-cover" loading="lazy" />
+              <img src={pizzaImg} alt="Pizza" className="w-full h-full object-cover" loading="lazy" />
             </div>
-          </Reveal>
+          </GsapReveal>
+        </div>
+
+        <div className="mt-20 grid lg:grid-cols-2 gap-10 items-center">
+          <GsapReveal className="lg:order-2">
+            <span className="pill bg-[var(--cream)] text-[var(--tomato)]">The patty</span>
+            <h2 className="mt-4 font-display text-5xl leading-tight">Smashed, never pressed.</h2>
+            <p className="mt-5 text-muted-foreground leading-relaxed text-lg">
+              80/20 fresh chuck, smashed onto a screaming-hot flat-top for that
+              crunchy crust and juicy center. Served on a brioche we bake daily.
+            </p>
+          </GsapReveal>
+          <GsapReveal delay={0.1} className="lg:order-1">
+            <div className="overflow-hidden rounded-[2rem] aspect-square">
+              <img src={burgerImg} alt="Burger" className="w-full h-full object-cover" loading="lazy" />
+            </div>
+          </GsapReveal>
+        </div>
+
+        {/* CTA */}
+        <div className="mt-28">
+          <GsapReveal>
+            <div className="rounded-[2rem] bg-[var(--ink)] text-white p-10 md:p-16 flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <h3 className="font-display text-4xl md:text-5xl max-w-xl">
+                Hungry yet? <span className="text-[var(--mustard)] italic">Let's eat.</span>
+              </h3>
+              <Link to="/menu" className="btn-primary self-start md:self-auto">
+                See the menu <ArrowUpRight className="size-4" />
+              </Link>
+            </div>
+          </GsapReveal>
         </div>
       </section>
     </div>
