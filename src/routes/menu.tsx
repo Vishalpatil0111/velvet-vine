@@ -12,9 +12,9 @@ import drinkImg from "@/assets/food-drink.jpg";
 export const Route = createFileRoute("/menu")({
   head: () => ({
     meta: [
-      { title: "Menu — Crust & Co" },
-      { name: "description", content: "Pizza, burgers, sandwiches, sides and drinks. View the full menu and order online for pickup or delivery." },
-      { property: "og:title", content: "Menu — Crust & Co" },
+      { title: "Menu — Snack Cafe" },
+      { name: "description", content: "Snacks, bites, sides and drinks. View the full menu and order online for pickup or delivery." },
+      { property: "og:title", content: "Menu — Snack Cafe" },
       { property: "og:description", content: "Pizza, burgers, sandwiches, sides and drinks." },
       { property: "og:image", content: pizzaImg },
     ],

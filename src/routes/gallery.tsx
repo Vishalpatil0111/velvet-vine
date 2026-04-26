@@ -18,7 +18,7 @@ if (typeof window !== "undefined") {
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Gallery — Crust & Co" },
+      { title: "Gallery — Snack Cafe" },
       { name: "description", content: "A look inside Crust & Co — the food, the room, the people." },
       { property: "og:title", content: "Gallery — Crust & Co" },
       { property: "og:description", content: "A visual journal of Crust & Co." },

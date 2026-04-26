@@ -11,7 +11,7 @@ export function Footer() {
               <span className="font-display text-lg text-white">C</span>
             </div>
             <span className="font-display text-2xl text-white">
-              Crust<span className="text-[var(--mustard)]">&Co</span>
+              Snack<span className="text-[var(--mustard)]">Cafe</span>
             </span>
           </Link>
           <p className="mt-5 max-w-sm leading-relaxed text-white/70">
@@ -61,7 +61,7 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-7xl px-6 py-5 flex flex-col md:flex-row justify-between gap-2 text-xs text-white/50">
-          <p>© {new Date().getFullYear()} Crust & Co.</p>
+          <p>© {new Date().getFullYear()} Snack Cafe.</p>
           <p>Hand-tossed in Brooklyn.</p>
         </div>
       </div>

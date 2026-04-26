@@ -7,9 +7,9 @@ import { GsapReveal } from "@/components/site/GsapReveal";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Visit & Order — Crust & Co" },
-      { name: "description", content: "Visit Crust & Co in Brooklyn or order pickup/delivery. Open daily, hours, address and phone." },
-      { property: "og:title", content: "Visit & Order — Crust & Co" },
+      { title: "Visit & Order — Snack Cafe" },
+      { name: "description", content: "Visit Snack Cafe or order pickup/delivery. Open daily, hours, address and phone." },
+      { property: "og:title", content: "Visit & Order — Snack Cafe" },
       { property: "og:description", content: "Visit us in Brooklyn or order pickup / delivery." },
     ],
   }),

@@ -8,9 +8,9 @@ import burgerImg from "@/assets/food-burger.jpg";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "Our Story — Crust & Co" },
-      { name: "description", content: "Crust & Co started as a single wood-fired oven in Brooklyn. Today we serve pizza, burgers and sandwiches with the same honest standard." },
-      { property: "og:title", content: "Our Story — Crust & Co" },
+      { title: "Our Story — Snack Cafe" },
+      { name: "description", content: "Snack Cafe started with a passion for delicious snacks and bites. Today we serve quality snacks with the same honest standard." },
+      { property: "og:title", content: "Our Story — Snack Cafe" },
       { property: "og:description", content: "From one oven to a Brooklyn favorite." },
       { property: "og:image", content: interiorImg },
     ],
@@ -32,7 +32,7 @@ function AboutPage() {
         <div className="mt-16 grid lg:grid-cols-12 gap-10">
           <GsapReveal className="lg:col-span-7">
             <div className="overflow-hidden rounded-[2rem] aspect-[5/4]">
-              <img src={interiorImg} alt="Crust & Co interior" className="w-full h-full object-cover" loading="lazy" />
+              <img src={interiorImg} alt="Snack Cafe interior" className="w-full h-full object-cover" loading="lazy" />
             </div>
           </GsapReveal>
           <GsapReveal delay={0.1} className="lg:col-span-5 flex flex-col justify-center">

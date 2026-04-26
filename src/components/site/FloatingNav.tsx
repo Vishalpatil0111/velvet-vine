@@ -64,7 +64,7 @@ export function FloatingNav() {
               <span className="font-display text-base text-white">C</span>
             </div>
             <span className="font-display text-lg tracking-tight">
-              Crust<span className="text-[var(--tomato)]">&Co</span>
+              Snack<span className="text-[var(--tomato)]">Cafe</span>
             </span>
           </Link>
 

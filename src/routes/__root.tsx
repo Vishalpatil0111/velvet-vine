@@ -26,14 +26,14 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Crust & Co — Wood-fired Pizza, Smash Burgers & Sandwiches" },
+      { title: "Snack Cafe — Delicious Snacks, Bites & More" },
       {
         name: "description",
         content:
-          "Crust & Co serves wood-fired pizza, smash burgers and pressed sandwiches in Brooklyn. Order pickup, delivery or grab a table — open daily.",
+          "Snack Cafe offers delicious snacks, bites and more. Order pickup, delivery or grab a table — open daily.",
       },
-      { name: "author", content: "Crust & Co" },
-      { property: "og:title", content: "Crust & Co — Pizza · Burgers · Sandwiches" },
+      { name: "author", content: "Snack Cafe" },
+      { property: "og:title", content: "Snack Cafe — Snacks · Bites · More" },
       {
         property: "og:description",
         content: "Wood-fired pizza, smash burgers and pressed sandwiches in Brooklyn.",
@@ -42,6 +42,7 @@ export const Route = createRootRoute({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "icon", href: "/snacklogo.png" },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
