@@ -6,7 +6,8 @@
       "Bash(wait)",
       "Bash(curl -s http://localhost:8081/)",
       "Bash(pkill -f \"vite\")",
-      "Bash(pkill -f \"node.*dev\")"
+      "Bash(pkill -f \"node.*dev\")",
+      "Bash(node --input-type=module -e ' *)"
     ]
   }
 }
